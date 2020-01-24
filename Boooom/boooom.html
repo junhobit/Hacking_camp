@@ -1,0 +1,76 @@
+﻿<!-- 범인은 김하영인것 같다고? IS 페이지에서 김하영 사진 찾자!-->
+<html>
+<head>
+<meta charset="utf-8">
+<h1>폭탄의 위치</h1>
+</head>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.1224730414833!2d127.13225701550546!3d35.846000328524774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35702330dc920b9d%3A0x63942ea4f92f3304!2z7KCE7KO87IucIOq4iOyVlOuPmSDsoITrtoHrjIDtlZnqtZAg6rO16rO864yA7ZWZN-2YuOq0gA!5e0!3m2!1sko!2skr!4v1548312962684" width="900" height="675" frameborder="0" style="border:0" allowfullscreen></iframe></br></br></br>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#filename").on('change', function(){
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                  $('#preImage').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+	<script>
+ function getCmaFileInfo(obj,stype) 
+ {
+    var fileObj, pathHeader , pathMiddle, pathEnd, allFilename, fileName, extName, flag;
+	flag = "asdf";
+    if(obj == "[object HTMLInputElement]") 
+	{
+        fileObj = obj.value
+    } 
+	else 
+	{
+        fileObj = document.getElementById(obj).value;
+    }
+    if (fileObj != "") 
+	{
+            pathHeader = fileObj.lastIndexOf("\\");
+            pathMiddle = fileObj.lastIndexOf(".");
+            pathEnd = fileObj.length;
+            fileName = fileObj.substring(pathHeader+1, pathMiddle);
+            extName = fileObj.substring(pathMiddle+1, pathEnd);
+            allFilename = fileName+"."+extName;
+ 
+            if(stype == "all") 
+			{
+				if(allFilename=="a9b2f9f99b4343d49496f95fbe69f477.jpg")
+				{
+                    alert("bWF5b25nbmV6X2NyYXp5Xw==");
+				}
+				else
+				{
+					alert("아닌것 같은데...");
+				}
+			}
+			
+    } 
+	else 
+	{
+            alert("파일을 선택해주세요");
+            return false;
+    }
+ }
+</script>
+</head>
+<body>
+<form action="${pageContext.request.contextPath}/updatetNoticePro.do" method="post" enctype="multipart/form-data" name="noticeForm">
+        <input type='file' id="filename" name="filename"/>
+        <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}"/>
+    </form>
+	<input type="button" value="정답" onclick="getCmaFileInfo('filename','all');" />
+</body>
+</html>
