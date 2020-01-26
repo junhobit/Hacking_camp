@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+<h1>이 사이트에서 "yumdda" 검색하면 염따 티 준다.</h1>
+</head>
+<body>
+<form action="yumdda.php" method="get">
+<input type="text" name="id"></br>
+<input type="submit" value="search"></br>
+</form>
+<form action="yumdda.php" method="get">
+<input type="hidden" name="name"></br>
+</form>
+</body>
+<html>
